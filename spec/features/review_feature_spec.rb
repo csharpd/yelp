@@ -14,7 +14,7 @@ describe 'reviewing restaurants' do
     click_button 'Leave review'
 
     expect(current_path).to eq restaurants_path
-    expect(page).to have_content 'So so (3)'
+    expect(page).to have_content 'So so (★★★☆☆)'
   end
 
   it 'display the average rating from all reviews' do

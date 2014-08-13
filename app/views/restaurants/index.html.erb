@@ -2,11 +2,17 @@
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
     <h2><%= restaurant.name %></h2>
+    <h4><%= restaurant.street %></h4>
+    <h4><%= restaurant.city %></h4>
+    <h4><%= restaurant.postcode %></h4>
+    <h4>Tel:<%= restaurant.tel %></h4>
+    <h4>Type:<%= restaurant.kind %></h4>
+    <h4>Description:<%= restaurant.description %></h4>
     <h3>Average rating: <%= star_rating(restaurant.average_rating) %></h3>
 
     <ul>
       <% restaurant.reviews.each do |review| %>
-        <li><%= "#{review.thoughts} (#{star_rating(review.rating)})" %></li>
+        <li><%= "#{review.thoughts} (#{star_rating(review.rating)})" %>- <em>Posted <%=time_ago_in_words(review.created_at)%> ago</em></li>
       <% end %>
     </ul>
     <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
