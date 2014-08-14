@@ -33,4 +33,22 @@ RSpec.describe Restaurant, :type => :model do
             expect(restaurant.average_rating).to eq 4.5
         end
     end
+
+    describe 'validations' do
+      it 'is not valid with a name of <2 characters' do
+        restaurant = Restaurant.new(name: 'Ab')
+        expect(restaurant).to have(1).error_on(:name)
+      end
+
+      it 'is not valid if it does not start with an uppercase letter' do
+        restaurant = Restaurant.new(name: 'nandos')
+        expect(restaurant).to have(1).error_on(:name)
+      end
+
+       it 'is not valid if it is not unique' do
+        Restaurant.create(name: 'Nandos')
+        restaurant = Restaurant.new(name: 'Nandos')
+        expect(restaurant).to have(1).error_on(:name)
+      end
+    end
 end

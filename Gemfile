@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
   gem 'capybara'
  gem 'database_cleaner', git: 'git@github.com:bmabey/database_cleaner.git'
   gem 'warden'

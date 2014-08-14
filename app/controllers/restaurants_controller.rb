@@ -10,8 +10,12 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.create(params[:restaurant].permit(:name, :street, :city, :postcode, :tel, :kind, :description))
-    redirect_to '/restaurants'
+    @restaurant = Restaurant.new(params[:restaurant].permit(:name, :street, :city, :postcode, :tel, :kind, :description))
+    if @restaurant.save
+      redirect_to '/restaurants'
+    else
+      render 'new'
+    end
   end
 
   def edit
