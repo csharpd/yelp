@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Restaurant, :type => :model do
 
-   let(:restaurant) {Restaurant.create(name: 'The Fat Duck')}
+   let(:restaurant) {Restaurant.create(name: 'The Fat Duck', kind: 'Restaurant')}
 
     describe '#average_rating method' do
 
@@ -35,20 +35,31 @@ RSpec.describe Restaurant, :type => :model do
     end
 
     describe 'validations' do
+      it 'is valid with a unique name > 2 characters,starting with a capital letter ' do
+        restaurant = Restaurant.new(name: 'The Fat Duck')
+        expect(restaurant).to have(:no).error_on(:name)
+
+      end
+
       it 'is not valid with a name of <2 characters' do
-        restaurant = Restaurant.new(name: 'Ab')
+        restaurant = Restaurant.new(name: 'Ab', kind: 'Restaurant')
         expect(restaurant).to have(1).error_on(:name)
       end
 
-      it 'is not valid if it does not start with an uppercase letter' do
-        restaurant = Restaurant.new(name: 'nandos')
+      it 'is not valid if the name does not start with an uppercase letter' do
+        restaurant = Restaurant.new(name: 'nandos', kind: 'Restaurant')
         expect(restaurant).to have(1).error_on(:name)
       end
 
-       it 'is not valid if it is not unique' do
-        Restaurant.create(name: 'Nandos')
-        restaurant = Restaurant.new(name: 'Nandos')
+       it 'is not valid if the name is not unique' do
+        Restaurant.create(name: 'Nandos', kind: 'Restaurant')
+        restaurant = Restaurant.new(name: 'Nandos', kind: 'Restaurant')
         expect(restaurant).to have(1).error_on(:name)
+      end
+
+        it 'is not valid if the kind isnt Restaurant, Market or Shop' do
+        restaurant = Restaurant.create(name: 'Nandos', kind:'fastfoodjoint')
+        expect(restaurant).to have(1).error_on(:kind)
       end
     end
 end

@@ -3,7 +3,7 @@
   <%= f.text_area :thoughts %>
 
   <%= f.label :rating %>
-  <%= f.select :rating, (1..5) %>
+  <%= f.select :rating, Review::VALID_RATINGS %>
 
   <%= f.submit 'Leave review' %>
 <% end %>
