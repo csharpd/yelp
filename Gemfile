@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
@@ -29,6 +29,8 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+ gem 'database_cleaner', git: 'git@github.com:bmabey/database_cleaner.git'
+  gem 'warden'
 end
 
 # Use ActiveModel has_secure_password

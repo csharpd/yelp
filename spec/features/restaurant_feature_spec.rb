@@ -9,24 +9,12 @@ describe 'restaurants' do
     end
   end
 
-  context 'Adding restaurants' do
-    before(:each) do
-      Restaurant.create(name: 'Honey & Co', street: '25a Warren St', city: 'London', postcode: 'W1T 5LZ', tel: '0207 388 6175', kind: 'Restaurant', description: 'Middle Eastern')
-    end
-
-    it 'should display them with all the details' do
-      visit '/restaurants'
-      expect(page).to have_content 'Honey & Co'
-      expect(page).to have_content '25a Warren St'
-      expect(page).to have_content 'London'
-      expect(page).to have_content 'W1T 5LZ'
-      expect(page).to have_content '0207 388 6175'
-      expect(page).to have_content 'Restaurant'
-      expect(page).to have_content 'Middle Eastern'
-    end
-  end
-
   describe 'Creating restaurants' do
+     before(:each) do
+      Restaurant.create(name: 'Honey & Co', street: '25a Warren St', city: 'London', postcode: 'W1T 5LZ', tel: '0207 388 6175', kind: 'Restaurant', description: 'Middle Eastern')
+      alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
+      login_as alex
+    end
     it 'prompts the user to fill out a form, then displays the new restaurant' do
 
       visit '/restaurants'
@@ -55,6 +43,8 @@ describe 'restaurants' do
   describe 'Editing restaurants' do
     before(:each) do
       Restaurant.create(name: 'McDonalds')
+       alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
+      login_as alex
     end
     it ' lets a user edit a restaurant' do
       visit '/restaurants'
@@ -71,6 +61,8 @@ describe 'restaurants' do
 describe 'Deleting restaurants' do
     before(:each) do
       Restaurant.create(name: 'McDonalds')
+       alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
+      login_as alex
     end
      it ' removes restaurants when user clicks the delete link' do
       visit '/restaurants'
