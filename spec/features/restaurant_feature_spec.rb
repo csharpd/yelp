@@ -18,23 +18,6 @@ describe 'restaurants' do
     end
   end
 
-  describe 'Editing restaurants' do
-    before(:each) do
-      Restaurant.create(name: 'McDonalds', kind:'Restaurant')
-       alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
-      login_as alex
-    end
-    it ' lets a user edit a restaurant' do
-      visit '/restaurants'
-      click_link 'Edit McDonalds'
-
-      fill_in 'Name', with: 'MaccyDs'
-      click_button 'Update Restaurant'
-
-      expect(page).to have_content 'MaccyDs'
-      expect(current_path).to eq '/restaurants'
-    end
-  end
 
 describe 'Deleting restaurants' do
     before(:each) do
