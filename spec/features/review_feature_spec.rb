@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-describe 'reviewing restaurants' do
+describe 'Reviewing restaurants' do
   before do
        @alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
        login_as @alex
@@ -10,11 +10,7 @@ describe 'reviewing restaurants' do
   end
 
   it 'allows users to leave reviews using a form, which appear alongside restaurants' do
-    visit restaurants_path
-    click_link 'Review Honey & Co'
-    fill_in 'Thoughts', with: 'So so'
-    select '3', from: 'Rating'
-    click_button 'Leave review'
+    leave_review(@honey,'So so', 3)
 
     expect(current_path).to eq restaurants_path
     expect(page).to have_content 'So so (★★★☆☆)'
@@ -33,13 +29,13 @@ describe 'reviewing restaurants' do
     expect(page).not_to have_link 'Review Honey & Co'
   end
 
-  # context 'as a user logged out' do
-  #   it 'should not see an option to review a restaurant' do
-  #     logout(:user)
-  #     visit restaurants_path(@honey)
-  #     expect(page).not_to have_link 'Leave Review'
-  #   end
+  context 'as a user logged out' do
+    it 'should not see an option to review a restaurant' do
+      logout(:user)
+      visit restaurants_path(@honey)
+      expect(page).not_to have_link 'Leave Review'
+    end
 
-  # end
+  end
 end
 

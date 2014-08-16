@@ -1,7 +1,4 @@
-require 'rails_helper'
-
-
-  describe 'Editing restaurants' do
+describe 'Deleting restaurants' do
     before(:each) do
        @alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
         @alex.restaurants.create(name: 'McDonalds', kind:'Restaurant')
@@ -12,14 +9,11 @@ require 'rails_helper'
         login_as @alex
       end
 
-      it ' lets a user edit a restaurant' do
+      it ' lets a user delete a restaurant' do
         visit '/restaurants'
-        click_link 'Edit McDonalds'
+        click_link 'Delete McDonalds'
 
-        fill_in 'Name', with: 'MaccyDs'
-        click_button 'Update Restaurant'
-
-        expect(page).to have_content 'MaccyDs'
+        expect(page).not_to have_content 'McDonalds'
         expect(current_path).to eq '/restaurants'
       end
     end
@@ -32,11 +26,9 @@ require 'rails_helper'
 
     it 'should display an error' do
       visit '/restaurants'
-      click_link 'Edit McDonalds'
+      click_link 'Delete McDonalds'
 
       expect(page).to have_content 'This is not your restaurant!'
     end
   end
 end
-
-
