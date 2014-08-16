@@ -21,9 +21,10 @@ describe 'restaurants' do
 
 describe 'Deleting restaurants' do
     before(:each) do
-      Restaurant.create(name: 'McDonalds',kind:'Restaurant')
-       alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
-      login_as alex
+
+      @alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
+      login_as @alex
+      @alex.restaurants.create(name: 'McDonalds',kind:'Restaurant')
     end
      it ' removes restaurants when user clicks the delete link' do
       visit '/restaurants'

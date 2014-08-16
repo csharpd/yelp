@@ -27,16 +27,24 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.update(params[:restaurant].permit(:name, :street, :city, :postcode, :tel, :kind, :description))
     redirect_to '/restaurants'
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy
+    @restaurant = current_user.restaurants.find(params[:id])
+     @restaurant.destroy
 
     flash[:notice] = 'Restaurant deleted successfully'
     redirect_to '/restaurants'
+
+    rescue ActiveRecord::RecordNotFound
+    flash[:notice] = 'This is not your restaurant!'
+    redirect_to '/restaurants'
+
+
   end
+
+
 end
