@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Yelp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta charset='utf8'>
-  <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
-  <link rel="stylesheet" href="sea_stylesheet.css" type="text/css" charset="utf-8" />
-</head>
-<body>
-  <nav>
-      <div id='logo_text'>Yelp!</div>
-<%= link_to 'Add a restaurant', new_restaurant_path %>
+  <head>
+    <title>Yelp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta charset='utf8'>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="sea_stylesheet.css" type="text/css" charset="utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/960_12_col.css" />
+  </head>
+  <body>
+    <div class="container_12 clearfix">
+      <nav>
+          <div id='logo_text'>Yelp!</div>
+          <div id='user_management'>
 
-    <% if user_signed_in? %>
-      Logged in as <%= current_user.email %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', new_user_session_path %>
-      <%= link_to 'Sign up', new_user_registration_path %>
-    <% end %>
-  </nav>
-<%= notice %>
-<%= yield %>
+            <%=  link_to 'Add a restaurant', new_restaurant_path %>
 
-</body>
+        <% if user_signed_in? %>
+          <h1>Logged in as <%= current_user.email %></h1>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign in', new_user_session_path %>
+          <%= link_to 'Sign up', new_user_registration_path %>
+        <% end %>
+        </div>
+      </nav>
+
+        <%= notice %>
+        <%= yield %>
+
+  </body>
 </html>
