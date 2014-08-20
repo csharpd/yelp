@@ -1,36 +1,38 @@
-<% if @restaurant.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+<form>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
 
-        <ul>
-    <% @restaurant.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+          <ul>
+      <% @restaurant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_for @restaurant do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= form_for @restaurant do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.label :street %>
-  <%= f.text_field :street %>
+    <%= f.label :street %>
+    <%= f.text_field :street %>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
 
-  <%= f.label :postcode %>
-  <%= f.text_field :postcode %>
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode %>
 
-  <%= f.label :tel %>
-  <%= f.text_field :tel %>
+    <%= f.label :tel %>
+    <%= f.text_field :tel %>
 
-  <%= f.label :kind %>
-  <%= f.text_field :kind %>
+    <%= f.label :kind %>
+    <%= f.text_field :kind %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+</form>

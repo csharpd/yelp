@@ -45,18 +45,12 @@
  nav {
   background-color: #1CC8CC;
   padding: 10px;
+  margin: 15px;
+  position: relative;
 
- /* top: 0px;
-  position: absolute;*/
  }
 
- #user_management{
-  display: inline-block;
-  position: absolute;
-  top: 80px;
-  right: 150px;
-  text-align: right;
- }
+
 
 
  #logo_text {
@@ -75,7 +69,7 @@
  }
 
 
- a {
+ a, .signup-btn {
   display: inline-block;
   width: 110px;
   cursor: pointer;
@@ -90,6 +84,45 @@
   margin: 0px 5px;
 }
 
+.nav_buttons {
+  background-color: black;
+  font-family: 'Josefin Slab', serif;
+  font-size: 20px;
+  border: 2px solid white;
+}
+
+#add{
+  position: absolute;
+  top:10px;
+  right:10px;
+}
+
+#in{
+  position: absolute;
+  right:10px;
+  top:80px;
+}
+
+#up{
+  position: absolute;
+  right:10px;
+
+  top:130px;
+}
+
+#out{
+  position: absolute;
+  right:10px;
+  top:80px;
+}
+
+
+#logged_in {
+  position: absolute;
+  right:15px;
+  bottom:5px;
+}
+
 section {
   width: 45%;
   border: 2px solid black;
@@ -97,7 +130,6 @@ section {
   text-align: center;
   margin: 20px;
   display: inline-block;
-
 }
 
 
@@ -105,10 +137,11 @@ h2 {
   font-family: 'seasideresortnfregular';
 }
 
-h1 {font-size: 20px;
-font-family: 'Josefin Slab', serif;}
-#name {
+h1 {
+  font-size: 20px;
+  font-family: 'Josefin Slab', serif;}
 
+#name {
   font-size: 30px;
   background-color: black;
   color: white;
@@ -128,10 +161,29 @@ h4 {
   display: block;
 }
 
-ul {
+#list_reviews {
   list-style-type: none;
   line-height: 30px;
   text-align: left;
   text-indent: 5px;
 }
+
+#flash {
+  text-align: center;
+  font-style: italic;
+  font-size: 40px;
+  width: 20% ;
+  color: white;
+  position: fixed;
+  top: 25px;
+  left: 180px;
+  z-index: 1;
+  display: inline-block;
+  width: 20%;
+}
+
+form{
+  font-family: 'Josefin Slab', serif;
+  }
+
 

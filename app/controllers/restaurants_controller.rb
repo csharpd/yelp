@@ -43,7 +43,6 @@ class RestaurantsController < ApplicationController
     flash[:notice] = 'This is not your restaurant!'
     redirect_to '/restaurants'
 
-
   end
 
 

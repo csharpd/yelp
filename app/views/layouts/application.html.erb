@@ -13,24 +13,31 @@
   </head>
   <body>
     <div class="container_12 clearfix">
-      <nav>
-          <div id='logo_text'>Yelp!</div>
-          <div id='user_management'>
+      <div id='header' class="article_grid_4">
+        <nav>
+            <div id='logo_text'>Yelp!</div>
 
-            <%=  link_to 'Add a restaurant', new_restaurant_path %>
+            <div class="user_management">
+              <%=  link_to 'Add a restaurant', new_restaurant_path, class:"nav_buttons", id:"add" %>
 
-        <% if user_signed_in? %>
-          <h1>Logged in as <%= current_user.email %></h1>
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Sign in', new_user_session_path %>
-          <%= link_to 'Sign up', new_user_registration_path %>
-        <% end %>
-        </div>
-      </nav>
+              <% if user_signed_in? %>
+                <h1 id="logged_in">Logged in as <%= current_user.email %></h1>
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete,class:"nav_buttons", id:"out" %>
+              <% else %>
+              <ul class ="user_management">
+                <%= link_to 'Sign in', new_user_session_path,class:"nav_buttons", id:"in" %>
+                <%= link_to 'Sign up', new_user_registration_path, class:"nav_buttons", id:"up" %>
+              <% end %>
+            </div>
 
-        <%= notice %>
-        <%= yield %>
-
+        </nav>
+      </div>
+      <h1 id='flash' class="grid_12">
+          <%= notice %>
+      </h1>
+      <div id='restaurant' class="article_grid_4">
+          <%= yield %>
+      </div>
+      </div>
   </body>
 </html>
