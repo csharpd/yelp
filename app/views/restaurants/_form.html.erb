@@ -1,4 +1,4 @@
-<form>
+
   <% if @restaurant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
@@ -28,11 +28,11 @@
     <%= f.text_field :tel %>
 
     <%= f.label :kind %>
-    <%= f.text_field :kind %>
+    <%= f.select :kind, options_for_select(%w[Restaurant Shop Market]) %>
 
     <%= f.label :description %>
     <%= f.text_field :description %>
 
-    <%= f.submit %>
+    <%= f.button class: 'form-btn'%>
   <% end %>
 </form>

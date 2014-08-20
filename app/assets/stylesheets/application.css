@@ -47,10 +47,7 @@
   padding: 10px;
   margin: 15px;
   position: relative;
-
  }
-
-
 
 
  #logo_text {
@@ -69,7 +66,7 @@
  }
 
 
- a, .signup-btn {
+ a, .form-btn  {
   display: inline-block;
   width: 110px;
   cursor: pointer;
@@ -82,6 +79,10 @@
   text-align: center;
   border-radius: 4px;
   margin: 0px 5px;
+}
+
+.form-btn {
+  margin-top: 10px;
 }
 
 .nav_buttons {
@@ -182,8 +183,30 @@ h4 {
   width: 20%;
 }
 
-form{
+form, input {
   font-family: 'Josefin Slab', serif;
+  font-size: 20px;
+  line-height: 20px;
+  display: block;
+  margin-bottom: 10px;
   }
+
+form {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 240px;
+  padding: 20px;
+  position: relative;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+#restaurant_form_title{
+  text-align: left;
+  margin-left: 45px;
+}
+
+
+
 
 
