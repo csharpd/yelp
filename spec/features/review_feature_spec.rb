@@ -5,7 +5,7 @@ describe 'Reviewing restaurants' do
   before do
        @alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
        login_as @alex
-        @alex.restaurants.create(name: 'Honey & Co', street: '25a Warren St', city: 'London', postcode: 'W1T 5LZ', tel: '0207 388 6175', kind: 'Restaurant', description: 'Middle Eastern')
+        @honey = @alex.restaurants.create(name: 'Honey & Co', street: '25a Warren St', city: 'London', postcode: 'W1T 5LZ', tel: '0207 388 6175', kind: 'Restaurant', description: 'Middle Eastern')
 
   end
 
@@ -26,7 +26,7 @@ describe 'Reviewing restaurants' do
 
    it 'does not allower users to write duplicate reviews' do
     leave_review(@honey,'So so', 3)
-    expect(page).not_to have_link 'Review Honey & Co'
+    expect(page).not_to have_link 'Review'
   end
 
   context 'as a user logged out' do

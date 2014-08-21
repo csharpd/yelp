@@ -11,7 +11,7 @@ describe 'Deleting restaurants' do
 
       it ' lets a user delete a restaurant' do
         visit '/restaurants'
-        click_link 'Delete McDonalds'
+        click_link 'Delete'
 
         expect(page).not_to have_content 'McDonalds'
         expect(current_path).to eq '/restaurants'
@@ -26,7 +26,7 @@ describe 'Deleting restaurants' do
 
     it 'should display an error' do
       visit '/restaurants'
-      click_link 'Delete McDonalds'
+      click_link 'Delete'
 
       expect(page).to have_content 'This is not your restaurant!'
     end

@@ -18,7 +18,7 @@ describe 'creating restaurants' do
       fill_in 'City', with: 'London'
       fill_in 'Postcode', with: 'W1T 5LZ'
       fill_in 'Tel', with: '0207 388 6175'
-      fill_in 'Kind', with: 'Restaurant'
+      select 'Restaurant', :from => 'Kind'
       fill_in 'Description', with: 'Middle Eastern'
       click_button 'Create Restaurant'
 

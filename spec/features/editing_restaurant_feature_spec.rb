@@ -14,7 +14,7 @@ require 'rails_helper'
 
       it ' lets a user edit a restaurant' do
         visit '/restaurants'
-        click_link 'Edit McDonalds'
+        click_link 'Edit'
 
         fill_in 'Name', with: 'MaccyDs'
         click_button 'Update Restaurant'
@@ -32,7 +32,7 @@ require 'rails_helper'
 
     it 'should display an error' do
       visit '/restaurants'
-      click_link 'Edit McDonalds'
+      click_link 'Edit'
 
       expect(page).to have_content 'This is not your restaurant!'
     end

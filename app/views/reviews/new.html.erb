@@ -14,9 +14,10 @@
 <%= form_for [@restaurant, @review] do |f| %>
   <%= f.label :thoughts %>
   <%= f.text_area :thoughts %>
-
+  <br/></br>
   <%= f.label :rating %>
   <%= f.select :rating, Review::VALID_RATINGS %>
+  </br>
 
-  <%= f.submit 'Leave review' %>
+  <%= f.submit 'Leave review', class: 'form-btn'%>
 <% end %>

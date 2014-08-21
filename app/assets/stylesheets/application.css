@@ -81,10 +81,6 @@
   margin: 0px 5px;
 }
 
-.form-btn {
-  margin-top: 10px;
-}
-
 .nav_buttons {
   background-color: black;
   font-family: 'Josefin Slab', serif;
@@ -192,18 +188,25 @@ form, input {
   }
 
 form {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 20px;
   width: 240px;
   padding: 20px;
-  position: relative;
+  position: absolute;
   border: 2px solid black;
   border-radius: 4px;
+
 }
 
-#restaurant_form_title{
+#form_title{
   text-align: left;
-  margin-left: 45px;
+  margin-left: 40px;
+}
+
+.form-btn {
+  margin-top: 10px;
+  position: relative;
+  left:115px;
 }
 
 
