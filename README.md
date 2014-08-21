@@ -1,6 +1,6 @@
 To do
 -------
-Upload to Heroku
+
 Add to readme
 
 Make logo a hyperlink
