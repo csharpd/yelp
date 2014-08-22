@@ -32,6 +32,7 @@ group :development, :test do
   gem 'capybara'
  gem 'database_cleaner', git: 'git@github.com:bmabey/database_cleaner.git'
   gem 'warden'
+  gem 'factory_girl_rails'
 end
 
 gem 'rails_12factor', group: :production

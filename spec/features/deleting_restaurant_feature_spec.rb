@@ -1,7 +1,7 @@
 describe 'Deleting restaurants' do
     before(:each) do
-       @alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
-        @alex.restaurants.create(name: 'McDonalds', kind:'Restaurant')
+        @alex = create(:user)
+        create(:mcdonalds, user: @alex)
     end
 
     context 'logged in as the restaurant creator' do
@@ -20,7 +20,7 @@ describe 'Deleting restaurants' do
 
   context 'logged in as another user' do
     before do
-      chloe = User.create(email: 'chloe@example.com', password: "12345678910", password_confirmation:'12345678910')
+      chloe = create(:chloe)
       login_as chloe
     end
 

@@ -4,7 +4,7 @@ describe 'creating restaurants' do
 
   context 'a valid restaurants' do
     before(:each) do
-      alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
+      alex = create(:user)
       login_as alex
     end
 
@@ -35,7 +35,7 @@ describe 'creating restaurants' do
 
   context 'an invalid restaurant' do
      before(:each) do
-      alex = User.create(email: "a@a.com", password: "12345678", password_confirmation:'12345678')
+      alex = create(:user)
       login_as alex
     end
      it 'prompts the user to fill out a form, then displays an error due to an uncapitalised name that is too short' do

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Restaurant, :type => :model do
 
-   let(:restaurant) {Restaurant.create(name: 'The Fat Duck', kind: 'Restaurant')}
+   let(:restaurant) {create(:restaurant)}
+   let(:usera) {create(:user)}
+   let(:userb) {create(:chloe)}
 
     describe '#average_rating method' do
 
@@ -14,29 +16,29 @@ RSpec.describe Restaurant, :type => :model do
 
       context 'one review' do
         it 'should return rating' do
-          restaurant.reviews.create(rating: 2)
+          restaurant.reviews.create(rating: 2, user: usera)
           expect(restaurant.average_rating).to eq 2
         end
       end
 
       context 'multiple reviews' do
         it 'should return the average rating' do
-          restaurant.reviews.create(rating: 3)
-          restaurant.reviews.create(rating: 5)
+          restaurant.reviews.create(rating: 3, user: usera)
+          restaurant.reviews.create(rating: 5, user: userb)
           expect(restaurant.average_rating).to eq 4
         end
       end
 
         it 'should return a float if avg not an integer' do
-            restaurant.reviews.create(rating: 4)
-            restaurant.reviews.create(rating: 5)
+            restaurant.reviews.create(rating: 4, user: usera)
+            restaurant.reviews.create(rating: 5, user: userb)
             expect(restaurant.average_rating).to eq 4.5
         end
     end
 
     describe 'validations' do
       it 'is valid with a unique name > 2 characters,starting with a capital letter ' do
-        restaurant = Restaurant.new(name: 'The Fat Duck')
+        restaurant = create(:restaurant)
         expect(restaurant).to have(:no).error_on(:name)
 
       end

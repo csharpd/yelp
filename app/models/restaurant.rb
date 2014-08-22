@@ -8,10 +8,10 @@ class Restaurant < ActiveRecord::Base
 
   def average_rating
     return 'N/A' if reviews.none?
-    reviews.inject(0) do |sum, review|
-      sum + review.rating.to_f
-    end / reviews.length
-    #faster way --> reviews.average(:rating)
+    # reviews.inject(0) do |sum, review|
+    #   sum + review.rating.to_f
+    # end / reviews.length
+    reviews.average(:rating)
   end
 
     def has_been_reviewed_by?(user)
